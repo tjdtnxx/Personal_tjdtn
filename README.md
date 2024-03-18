@@ -33,7 +33,7 @@ API version: 2024-03-01
 
 | Name | Parameter | Return | Description |
 | -------- | -------- | -------- | -------- |
-| [Beagle()](###-Beagle()) |  | Beagle 인스턴스의 참조 | Beagle 인스턴스를 생성하고 하드웨어 beagle 로봇과 통신을 연결한다. Beagle(0)을 호출한 것과 같다.
+| [Beagle()](#Beagle()) |  | Beagle 인스턴스의 참조 | Beagle 인스턴스를 생성하고 하드웨어 beagle 로봇과 통신을 연결한다. Beagle(0)을 호출한 것과 같다.
 | [Beagle(index)](###-Beagle(index)) |  | Beagle 인스턴스의 참조 | Beagle 인스턴스를 생성하고 하드웨어 비글 로봇과 통신을 연결한다. 몇 번째 비글 로봇인지를 나타내는 인덱스를 index로 설정한다. 인덱스가 같으면 같은 비글 로봇이다.
 | [Beagle(port_name)](###-Beagle(port_name)) | port_name: 시리얼 port 이름 (문자열) | Beagle 인스턴스의 참조 | Beagle 인스턴스를 생성하고 port_name의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 연결한다. Beagle(0, port_name)을 호출한 것과 같다.
 | [Beagle(index, port_name)](###-Beagle(index,port_name)) | index: 몇 번째 비글 로봇인지를 나타내는 인덱스(0이상의 정수), port_name: 시리얼 포트 이름(문자열) | Beagle 인스턴스의 참조 | Beagle 인스턴스를 생성하고 port_name의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 연결한다. Beagle(0, port_name)을 호출한 것과 같다.
