@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="/to/wiki.css">
+
+
 # Beagle Python API 메뉴얼
 
 
@@ -65,6 +68,14 @@ Beagle 로봇의 전원 스위치를 올린 후, 동글과 가까이 두기
 
     - 소리가 나지 않는다면, 햄스터의 배터리가 충분한지 확인 (배터리가 없으면 충전)
 
+<br>
+
+**[ 간단 용어 정리 ]**
+| 용어 | 뜻 |
+| --- | --- |
+| 인스턴스 | Beagle이라는 클래스를 사용하기 위한 객체 선언 |
+| Parameter | 함수 내의 변수. f(x)의 x와 같은 의미이다. |
+| Return | 반환값. y = f(x) 에서 y와 같은 의미이다. |
 
 
 
@@ -77,20 +88,38 @@ Python을 이용해서 Beagle을 프로그래밍을 하기 위해서는 먼저 P
 
 이 차례에서는 개발환경에 Beagle인스턴스를 생성하는 것과 Beagle을 해제하는 방법에 대한 가이드라인입니다.
 
+
+- [생성](#beagle)
+- [해제](#dispose)
+
 ## Beagle()
 
 변수(예: beagle)에 생성 api인 Beagle()를 대입해주어 파이썬 파일에 비글 인스턴스를 활성화합니다.
 
+Beagle 인스턴스를 생성하고 하드웨어 비글 로봇과 통신을 연결한다. Beagle(0)을 호출한 것과 같습니다.
 
-< 예시 ><br>
+| Sign | | 
+| -------- | -------- |
+| Parameter |  | 
+| Return | Beagle 인스턴스 |
+
+
 ```python
 from roboid import *
 
 beagle = Beagle()
 ```
-<!-- >beagle : Beagle()클래스의 인스턴스
->
->Beagle() : 'Beagle'클래스의 생성자를 호출하여 새로운 'Beagle'객체를 생성 -->
+
+<br>
+사용예시
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+beagle.move_forward(50)    # beagle 앞으로 이동
+```
 
 | 설명 | |
 | --- | --- |
@@ -100,10 +129,248 @@ beagle = Beagle()
 
 
 
-<br><br>
+
+
+
+<br><br><br>
 
 ## Beagle(index)
 Beagle 인스턴스를 생성하고 하드웨어 비글 로봇과 통신을 연결한다. <br>몇 번째 비글 로봇인지를 나타내는 인덱스를 index로 설정한다. 인덱스가 같으면 같은 비글 로봇이다.
+
+| Sign | | 
+| -------- | -------- |
+| Parameter | index: 몇번째 비글 로봇인지를 나타내는 인덱스 (0 이상의 정수) | 
+| Return | Beagle 인스턴스 |
+
+
+```python
+from roboid import *
+
+beagle1 = Beagle(0)
+beagle2 = Beagle(1)
+```
+<br>
+사용예시
+
+```python
+from roboid import *
+
+beagle1 = Beagle(0)
+beagle2 = Beagle(1)
+
+beagle1.move_forward(50)    # beagle1은 앞으로 이동
+
+beagle2.move_backward(50)   # beagle2는 뒤로 이동
+```
+| 설명 | |
+| --- | --- |
+| beagle1 | Beagle()클래스의 첫번째 인스턴스 |
+| beagle2 | Beagle()클래스의 두번째 인스턴스 |
+| Beagle(0) | 'Beagle' 클래스의 생성자를 호출하여 'Beagle'객체를 생성하고 beagle1에 대입 |
+| Beagle(1) | 'Beagle' 클래스의 생성자를 호출하여 'Beagle'객체를 생성하고 beagle2에 대입 |
+
+
+
+<br><br><br>
+
+## Beagle(port_name)
+Beagle 인스턴스를 생성하고 port_name의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 연결한다.<br>
+Beagle(0, port_name)을 호출한 것과 같다.
+
+
+| Sign | | 
+| -------- | -------- |
+| Parameter | port_name: 시리얼 포트 이름 (문자열) | 
+| Return | Beagle 인스턴스 참조 |
+
+```python
+from roboid import *
+
+beagle = Beagle('COM52')
+```
+<br>
+
+| 설명 | |
+| --- | --- |
+| beagle | Beagle()클래스의 인스턴스 |
+| Beagle('COM52') | 'Beagle' 클래스의 생성자를 호출하여 'COM52'의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 beagle로 연결한다. |
+
+
+<br><br><br>
+
+## Beagle(index, port_name)
+Beagle 인스턴스를 생성하고 port_name의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 연결한다.<br>
+몇 번째 비글 로봇인지를 나타내는 인덱스를 index로 설정한다. 인덱스가 같으면 같은 비글 로봇이다.
+
+
+
+| Sign | | 
+| -------- | -------- |
+| Parameter | index: 몇번째 비글 로봇인지를 나타내는 인덱스 (0 이상의 정수)<br>port_name: 시리얼 포트 이름 (문자열) | 
+| Return | Beagle 인스턴스 참조 |
+
+```python
+from roboid import *
+
+beagle1 = Beagle(0,'COM52')
+beagle2 = Beagle(1,'COM53')
+```
+<br>
+
+| 설명 | |
+| --- | --- |
+| beagle1 | Beagle()클래스의 첫번째 인스턴스 |
+| beagle2 | Beagle()클래스의 두번째 인스턴스 |
+| Beagle(0,'COM52') | 'Beagle' 클래스의 생성자를 호출하여 인덱스 0으로 'COM52'의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 beagle1로 연결한다. |
+| Beagle(1,'COM53') | 'Beagle' 클래스의 생성자를 호출하여 인덱스 1로 'COM53'의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 beagle2로 연결한다. |
+
+
+<br><br><br>
+
+## dispose()
+비글 로봇의 상태를 초기화하고 통신 연결을 끊는다.
+
+
+| Sign | | 
+| -------- | -------- |
+| Parameter |  | 
+| Return |  |
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+beagle.dispose()    # 비글 로봇 연결을 끊는다.
+```
+<br>
+
+| 설명 | |
+| --- | --- |
+| beagle | Beagle()클래스의 인스턴스 |
+| beagle.dispose() | beagle 로봇의 연결을 끊는다.
+
+
+
+<br><br><br>
+
+## reset()
+비글 로봇의 상태를 초기화한다.
+
+
+| Sign | | 
+| -------- | -------- |
+| Parameter |  | 
+| Return |  |
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+beagle.reset()    # 비글 로봇을 초기화한다.
+```
+<br>
+
+| 설명 | |
+| --- | --- |
+| beagle.reset() | beagle 로봇의 연결을 끊는다.
+
+
+
+
+<br><br><br><br><br><br>
+
+# 바퀴 움직임
+
+이 문서에서는 연결이 완료된 비글 로봇을 앞뒤, 좌우 등 바퀴를 이용해서 여러 움직임을 높은 자유도로 원하는 프로그래밍을 할 수 있습니다.
+
+- [전진](#move_forward)
+- [후진]()
+- [스핀]()
+- [피봇]()
+- [그외]()
+
+<br><br><br>
+
+## move_forward()
+
+비글을 앞으로 1 초 이동한다. (기본 속도인 50%의 속도로 이동)
+
+move_forward(1) 또는 move_forward(1,50)을 호출한 것과 같다.
+
+
+| Sign | | 
+| -------- | -------- |
+| Parameter |  | 
+| Return |  |
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+beagle.move_forward()
+```
+<br>
+
+| 설명 | |
+| --- | --- |
+| beagle.move_forward() | beagle 로봇을 기본속도로 앞으로 1초 이동한다.
+
+
+<br><br><br>
+
+## move_forward(sec)
+
+비글을 앞으로 sec 초 이동한다. (기본 속도인 50%의 속도로 이동)
+
+move_forward(sec,50)을 호출한 것과 같다.
+
+
+| Sign | | 
+| -------- | -------- |
+| Parameter | sec: 이동할 시간(실수) [초] | 
+| Return |  |
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+beagle.move_forward(2)  # 기본속도로 앞으로 2초 이동한다.
+```
+
+<br><br><br>
+
+## move_forward(sec, velocity)
+
+sec초 앞으로 이동한다. (velocity 속도로 이동)
+
+sec 값이 음수이면 반대 방향으로 이동한다.
+
+velocity 값이 음수이면 반대 방향으로 이동한다.
+
+
+
+| Sign | | 
+| -------- | -------- |
+| Parameter | sec: 이동할 시간(실수) [초] <br> velocity: 이동할 속도(실수) | 
+| Return |  |
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+beagle.move_forward(2,50)  # 50 %의 속도로 앞으로 2초 이동한다.
+```
+
+
+
+
+
+
 
 
 <br><br><br><br><br><br>
