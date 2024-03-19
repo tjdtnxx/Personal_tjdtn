@@ -7,7 +7,7 @@
 이 문서는 로보메이션의 Beagle을 Python으로 프로그래밍하려는 사용자를 위한 라이브러리 API Guide입니다. 
 
 아래 목차에서 **도움말**을 보고싶은 **목차**를 선택하세요.<br>
-각 API들의 [제목]()을 클릭하면 [예제코드](#beagle)가 제공되어 있습니다.
+각 API들의 [제목](#생성)을 클릭하면 [예제코드](#beagle)가 제공되어 있습니다.
 <br><br>
 >Service: [로보메이션](https://www.robomation.net)<br>
 API version: 2024-03-01
@@ -67,9 +67,46 @@ API version: 2024-03-01
 | Name | Parameter | Return | Description |
 | -------- | -------- | -------- | -------- |
 | move_forward() |  |  | 앞으로 1초 이동한다. (기본 속도인 50%의 속도로 이동), <br>move_forward(1) 또는 move_forward(1, 50)을 호출한 것과 같다.
+| move_forward(sec) | sec: 이동할 시간(실수) [초] |  | sec초 앞으로 이동한다. (기본 속도인 50%의 속도로 이동) <br> move_forward(sec, 50)을 호출한 것과 같다. <br> sec 값이 음수이면 반대 방향으로 이동한다.
+| move_forward(sec,velocity) | sec: 이동할 시간(실수) [초] <br> velocity: 이동할 속도(실수)(-100~100)[%] |  | sec초 앞으로 이동한다. (velocity 속도로 이동) <br> sec값이 음수이면 반대 방향으로 이동한다. <br> velocity 값이 음수이면 반대 방향으로 이동한다.
+| move_forward_pulse(pulse) | pulse: 이동할 펄스 수(0이상의 정수, 0:정지) |  | 펄스(pulse) 수만큼 앞으로 이동한다. (기본 속도인 50%의 속도로 이동) <br> move_forward_pulse(pulse, 50)을 호출한 것과 같다. <br> pulse 값이 음수이면 반대 방향으로 이동한다.
+| move_forward_pulse(pulse,velocity) | pulse: 이동할 펄스 수(0이상의 정수, 0: 정지) <br> velocity: 이동할 속도(실수)(-100~100)[%] | | 펄스(pulse) 수만큼 앞으로 이동한다. (velocity 속도로 이동) <br> pulse 값이 음수이면 반대 방향으로 이동한다. <br> velocity 값이 음수이면 반대 방향으로 이동한다. |
+
+### 후진
+
+| Name | Parameter | Return | Description |
+| -------- | -------- | -------- | -------- |
+| move_backward() | | | 뒤로 1 초 이동한다. (기본 속도인 50 %의 속도로 이동) <br> move_backward(1) 또는 move_backward(1,50)을 호출한 것과 같다. |
+| move_backward(sec) | sec: 이동할 시간(실수) [초]| | sec초 뒤로 이동한다. (기본 속도인 50%의 속도로 이동) <br>move_backward(sec, 50)을 호출한 것과 같다. <br>sec 값이 음수이면 반대 방향으로 이동한다.|
+| move_backward(sec,velocity) | sec: 이동할 시간(실수) [초]<br>velocity: 이동할 속도(실수)(-100~100)[%]| | sec초 뒤로 이동한다. (velocity 속도로 이동) <br>sec 값이 음수이면 반대 방향으로 이동한다.<br> velocitty 값이 음수이면 반대 방향으로 이동한다.|
+| move_backward_pulse(pulse) | pulse: 이동할 펄스 수 (0이상의 정수, 0:정지) |  | 펄스(pulse) 수만큼 뒤로 이동한다. (기본 속도인 50%의 속도로 이동) <br> move_backward_pulse(pulse, 50)을 호출한 것과 같다. <br> pulse 값이 음수이면 반대 방향으로 이동한다.|
+| move_backward_pulse(pulse,velocity) | pulse: 이동할 펄스 수 (0이상의 정수, 0: 정지) <br> velocity: 이동할 속도(실수)(-100~100)[%] | | 펄스(pulse) 수만큼 뒤로 이동한다. (velocity 속도로 이동) <br> pulse 값이 음수이면 반대 방향으로 이동한다. <br> velocity 값이 음수이면 반대 방향으로 이동한다. |
 
 
+### 스핀
 
+| Name | Parameter | Return | Description |
+| -------- | -------- | -------- | -------- |
+| turn_left() | | | 제자리에서 왼쪽으로 1 초 회전한다. (기본 속도인 50 %의 속도로 회전) <br> turn_left(1) 또는 turn_left(1,50)을 호출한 것과 같다. |
+| turn_left(sec) | sec: 이동할 시간(실수) [초] | | sec 초 동안 제자리에서 왼쪽으로 회전한다. (기본 속도인 50 %의 속도로 회전) <br> turn_left(sec,50)을 호출한 것과 같다. sec 값이 음수이면 반대 방향으로 회전한다. |
+| turn_left(sec,velocity) | sec: 이동할 시간(실수) [초] <br>velocity: 이동할 속도(실수)(-100~100)[%] | | sec 초 동안 제자리에서 왼쪽으로 회전한다. (velocity 속도로 회전) <br> sec 값이 음수이면 반대 방향으로 회전한다. <br> velocity 값이 음수이면 반대 방향으로 회전한다. |
+| turn_left_pulse(pulse) | pulse: 이동할 펄스 수 (0이상의 정수, 0: 정지) | | 펄스(pulse) 수만큼 제자리에서 왼쪽으로 회전한다. (기본 속도인 50%의 속도로 회전)<br>turn_left_pulse(pulse, 50)을 호출한 것과 같다.<br>pulse 값이 음수이면 반대 방향으로 회전한다. |
+| turn_left_pulse(pulse,velocity) | pulse: 이동할 펄스 수 (0이상의 정수, 0: 정지)<br>velocity: 이동할 속도(실수)(-100~100)[%]  | | 펄스(pulse) 수만큼 제자리에서 왼쪽으로 회전한다. (velocity 속도로 회전)<br>pulse 값이 음수이면 반대 방향으로 회전한다. <br> velocity 값이 음수이면 반대 방향으로 회전한다.|
+
+<br>
+
+| Name | Parameter | Return | Description |
+| -------- | -------- | -------- | -------- |
+| turn_right() | | | 제자리에서 오른쪽으로 1 초 회전한다. (기본 속도인 50 %의 속도로 회전) <br> turn_right(1) 또는 turn_right(1,50)을 호출한 것과 같다. |
+| turn_right(sec) | sec: 이동할 시간(실수) [초] | | sec 초 동안 제자리에서 오른쪽으로 회전한다. (기본 속도인 50 %의 속도로 회전) <br> turn_right(sec,50)을 호출한 것과 같다. sec 값이 음수이면 반대 방향으로 회전한다. |
+| turn_right(sec,velocity) | sec: 이동할 시간(실수) [초] <br>velocity: 이동할 속도(실수)(-100~100)[%] | | sec 초 동안 제자리에서 오른쪽으로 회전한다. (velocity 속도로 회전) <br> sec 값이 음수이면 반대 방향으로 회전한다. <br> velocity 값이 음수이면 반대 방향으로 회전한다. |
+| turn_right_pulse(pulse) | pulse: 이동할 펄스 수 (0이상의 정수, 0: 정지) | | 펄스(pulse) 수만큼 제자리에서 오른쪽으로 회전한다. (기본 속도인 50%의 속도로 회전)<br>turn_right_pulse(pulse, 50)을 호출한 것과 같다.<br>pulse 값이 음수이면 반대 방향으로 회전한다. |
+| turn_right_pulse(pulse,velocity) | pulse: 이동할 펄스 수 (0이상의 정수, 0: 정지)<br>velocity: 이동할 속도(실수)(-100~100)[%]  | | 펄스(pulse) 수만큼 제자리에서 오른쪽으로 회전한다. (velocity 속도로 회전)<br>pulse 값이 음수이면 반대 방향으로 회전한다. <br> velocity 값이 음수이면 반대 방향으로 회전한다.|
+
+
+### Pivot
+
+### 그 외
 
 
 
