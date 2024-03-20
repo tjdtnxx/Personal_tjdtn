@@ -1,0 +1,132 @@
+1. 생성 및 폐기
+Beagle()
+Beagle(index)
+Beagle(index, port_name)
+dispose()
+reset()
+
+2. 바퀴 움직임
+move_forward()
+move_forward(sec)
+move_forward(sec,velocity[%])
+move_forward_pulse(pulse)
+move_forward_pulse(pulse, velocity)
+
+move_backword()
+move_backward(sec)
+move_backward(sec, velocity)
+move_backward_pulse(pulse)
+move_backward_pulse(pulse, velocity)
+
+turn_left()
+turn_left(sec)
+turn_left(sec, velocity)
+turn_left_pulse(pulse)
+turn_left_pulse(pulse, velocity)
+
+turn_right()
+turn_right(sec)
+turn_right(sec, velocity)
+turn_right_pulse(pulse)
+turn_right_pulse(pulse, velocity)
+
+pivot_left()
+pivot_left(sec)
+pivot_left(sec, velocity)
+pivot_left_pulse(pulse)
+pivot_left_pulse(pulse, velocity)
+pivot_right()
+pivot_right(sec)
+pivot_right(sec, velocity)
+pivot_right_pulse(pulse)
+pivot_right_pulse(pulse, velocity)
+
+wheels(left_velocity, right_velocity)
+wheels(velocity)
+left_wheel(velocity)
+right_wheel(velocity)
+stop()
+
+3. 소리
+buzzer(hz)
+tempo(bpm)
+note(pitch)
+note(pitch, beats)
+sound(sound_id)
+sound(sound_id, repeat)
+sound_until_done(sound_id)
+sound_until_done(sound_id, repeat)
+beep()
+
+
+4. 센서
+signal_strength()
+temperature()
+left_encoder()
+right_encoder()
+reset_encoder()
+
+accelerometer_x()
+accelerometer_y()
+accelerometer_z()
+accelerometer()
+
+raw_accelerometer_x()
+raw_accelerometer_y()
+raw_accelerometer_z()
+raw_accelerometer()
+scale_accelerometer()
+listen_accelerometer(fn, interpolation=None)
+listen_raw_accelerometer(fn, interpolation=None)
+
+gyroscope_x()
+gyroscope_y()
+gyroscope_z()
+gyroscope()
+raw_gyroscope_x()
+raw_gyroscope_y()
+raw_gyroscope_z()
+raw_gyroscope()
+
+scale_gyroscope()
+listen_gyroscope(fn, interpolation=None)
+listen_raw_gyroscope(fn, interpolation=None)
+tilt()
+battery_state()
+charge_state()
+timestamp_basic()
+timestamp_imu()
+
+5. 서브모터
+servo_output_a(degree)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
