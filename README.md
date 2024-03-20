@@ -1,6 +1,4 @@
-[스타일 시트](./style.css)
-
-
+수정240320
 
 
 # Beagle Python API 메뉴얼
