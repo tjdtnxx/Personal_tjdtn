@@ -1,6 +1,3 @@
-<link rel="stylesheet" type="text/css" href="/to/wiki.css">
-
-
 # Beagle Python API 메뉴얼
 
 
@@ -40,7 +37,7 @@ API는 Application Programming Interface의 줄임말입니다. API의 맥락에
 
 ### 1. 라이브러리 설치
 터미널 창에 "pip install -U roboid"를 입력하여 roboid 라이브러리를 설치합니다.
-![Alt text](image-2.png)
+
 roboid 라이브러리가 설치가 완료되었으면 beagle을 사용할 준비가 되었습니다.
 
 Python을 이용하여 Beagle을 프로그래밍하기 위해 python 파일 첫줄에 다음과 같이 입력을 하여 roboid 라이브러리를 활성화 합니다.
@@ -79,9 +76,10 @@ Beagle 로봇의 전원 스위치를 올린 후, 동글과 가까이 두기
 
 
 
-<br><br><br>
+<br><br><br><br>
 ---
-<br><br><br>
+---
+<br><br><br><br>
 
 # 생성 및 해제
 Python을 이용해서 Beagle을 프로그래밍을 하기 위해서는 먼저 PC와 Beagle을 연결시켜 Beagle객체를 사용하기 위해서는 Beagle 인스턴스를 생성해주어야 합니다.
@@ -91,6 +89,8 @@ Python을 이용해서 Beagle을 프로그래밍을 하기 위해서는 먼저 P
 
 - [생성](#beagle)
 - [해제](#dispose)
+
+<br><br><br>
 
 ## Beagle()
 
@@ -199,6 +199,7 @@ Beagle(0, port_name)을 호출한 것과 같다.
 
 Beagle 인스턴스 참조
 
+### 코드
 
 ```python
 from roboid import *
@@ -226,11 +227,19 @@ Beagle 인스턴스를 생성하고 port_name의 시리얼 포트를 통해 하�
 몇 번째 비글 로봇인지를 나타내는 인덱스를 index로 설정한다. 인덱스가 같으면 같은 비글 로봇이다.
 
 
+### 파라미터
 
-| Sign | | 
-| -------- | -------- |
-| Parameter | index: 몇번째 비글 로봇인지를 나타내는 인덱스 (0 이상의 정수)<br>port_name: 시리얼 포트 이름 (문자열) | 
-| Return | Beagle 인스턴스 참조 |
+| Parameter | Description |
+| --- | --- |
+| index | 몇 번째 비글 로봇인지 나타내는 인덱스 (0 이상의 정수) |
+| port_name | 시리얼 포트 이름 (문자열) |
+
+### 반환값
+
+Beagle 인스턴스 참조
+
+### 코드
+
 
 ```python
 from roboid import *
@@ -248,16 +257,20 @@ beagle2 = Beagle(1,'COM53')
 | Beagle(1,'COM53') | 'Beagle' 클래스의 생성자를 호출하여 인덱스 1로 'COM53'의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 beagle2로 연결한다. |
 
 
+
+
+
+
+
+
+
 <br><br><br>
 
 ## dispose()
 비글 로봇의 상태를 초기화하고 통신 연결을 끊는다.
 
 
-| Sign | | 
-| -------- | -------- |
-| Parameter |  | 
-| Return |  |
+### 코드
 
 ```python
 from roboid import *
@@ -275,16 +288,17 @@ beagle.dispose()    # 비글 로봇 연결을 끊는다.
 
 
 
+
+
+
+
+
 <br><br><br>
 
 ## reset()
 비글 로봇의 상태를 초기화한다.
 
-
-| Sign | | 
-| -------- | -------- |
-| Parameter |  | 
-| Return |  |
+### 코드
 
 ```python
 from roboid import *
@@ -300,12 +314,23 @@ beagle.reset()    # 비글 로봇을 초기화한다.
 | beagle.reset() | beagle 로봇의 연결을 끊는다.
 
 
+
+
+
+
+
+
 <br><br><br><br>
 
 ---
 ---
 
 <br><br><br><br>
+
+
+
+
+
 
 # 바퀴 움직임
 
@@ -325,11 +350,7 @@ beagle.reset()    # 비글 로봇을 초기화한다.
 
 move_forward(1) 또는 move_forward(1,50)을 호출한 것과 같다.
 
-
-| Sign | | 
-| -------- | -------- |
-| Parameter |  | 
-| Return |  |
+### 코드
 
 ```python
 from roboid import *
@@ -340,9 +361,9 @@ beagle.move_forward()
 ```
 <br>
 
-| 설명 | |
+
+| beagle.move_forward() | beagle 로봇을 기본속도로 앞으로 1초 이동한다. |
 | --- | --- |
-| beagle.move_forward() | beagle 로봇을 기본속도로 앞으로 1초 이동한다.
 
 
 <br><br><br>
