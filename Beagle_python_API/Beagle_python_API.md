@@ -374,11 +374,13 @@ beagle.move_forward()
 
 move_forward(sec,50)을 호출한 것과 같다.
 
+### 파라미터
 
-| Sign | | 
+| Parameter | Description | 
 | -------- | -------- |
-| Parameter | sec: 이동할 시간(실수) [초] | 
-| Return |  |
+| sec | 이동할 시간(실수) [초] |
+
+
 
 ```python
 from roboid import *
@@ -399,11 +401,13 @@ sec 값이 음수이면 반대 방향으로 이동한다.
 velocity 값이 음수이면 반대 방향으로 이동한다.
 
 
+### 파라미터
 
-| Sign | | 
+| Parameter | Description | 
 | -------- | -------- |
-| Parameter | sec: 이동할 시간(실수) [초] <br> velocity: 이동할 속도(실수) | 
-| Return |  |
+| sec | 이동할 시간(실수) [초] |
+| velocity | 이동할 속도(실수) [%] | 
+
 
 ```python
 from roboid import *
@@ -413,6 +417,33 @@ beagle = Beagle()
 beagle.move_forward(2,50)  # 50 %의 속도로 앞으로 2초 이동한다.
 ```
 
+
+
+<br><br><br>
+
+## move_forward(pulse)
+
+펄스(pulse) 수만큼 앞으로 이동한다. (기본 속도인 50%의 속도로 이동)
+
+move_forward_pulse(pulse, 50)을 호출한 것과 같다.
+
+pulse 값이 음수이면 반대 방향으로 이동한다.
+
+
+### 파라미터
+
+| Parameter | Description | 
+| -------- | -------- |
+| Parameter | sec: 이동할 시간(실수) [초] <br> velocity: 이동할 속도(실수) | 
+
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+beagle.move_forward(2,50)  # 50 %의 속도로 앞으로 2초 이동한다.
+```
 
 
 
