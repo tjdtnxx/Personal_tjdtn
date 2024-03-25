@@ -14,15 +14,15 @@ API version: 2024-03-01
 
 <br>
 
-### < 이 문서의 내용 >
->- [시작하기에 앞서](#시작하기에-앞서)
->- [생성 및 해제](#생성-및-해제) <br>
->- [바퀴 움직임](#바퀴-움직임) <br>
->- [소리](#소리) <br>
->- [센서](#센서) <br>
->- [서보 모터](#서보-모터) <br>
->- [LiDar](#LiDar) <br>
->- [전역 함수](#전역-함수) <br>
+
+### [시작하기에 앞서](#시작하기에-앞서)
+### [생성 및 해제](#생성-및-해제) <br>
+### [바퀴 움직임](#바퀴-움직임) <br>
+### [소리](#소리) <br>
+### [센서](#센서) <br>
+### [서보 모터](#서보-모터) <br>
+### [LiDar](#lidar) <br>
+### [전역 함수](#전역-함수) <br>
 
 <br><br>
 # 시작하기에 앞서
@@ -91,6 +91,12 @@ Python을 이용해서 Beagle을 프로그래밍을 하기 위해서는 먼저 P
 - [해제](#dispose)
 
 <br><br><br>
+
+# Beagle 생성
+
+비글의 생성과 관련된 API입니다.
+
+<br>
 
 ## Beagle()
 
@@ -260,9 +266,15 @@ beagle2 = Beagle(1,'COM53')
 
 
 
+<br><br><br><br>
 
+---
+---
+<br><br><br><br>
 
+# Beagle 해제
 
+비글의 해제와 관련된 API입니다.
 
 
 
@@ -3317,19 +3329,368 @@ beagle.start_lidar()
 value = beagle.lidar_chart()
 ```
 
+<br><br><br>
+
+## lidar_mode(mode)
+
+라이다 센서의 모드를 설정합니다. 라이다 센서의 모드를 따로 설정하지 않으면 기본 모드(raw)로 설정되어 있습니다.
+
+### Parameters
+
+| Parameter | Description |
+| --------- | ----------- |
+| mode      | 라이다 센서의 모드 (`raw`, `zero`, `trunc`, 대소문자 구분하지 않음) |
+
+### 코드
+
+```python
+from roboid import *
+
+beagle = Beagle()
+beagle.lidar_mode('zero')
+beagle.start_lidar()
+```
+
+<br><br><br>
+
+<br><br><br><br>
+
+---
+---
+
+<br><br><br><br>
+
+
+# 전역 함수
+
+<br>
+
+## dispose()
+
+모든 로봇의 상태를 초기화하고 통신 연결을 끊습니다.
+
+```python
+from roboid import *
+
+beagle = Beagle()
+# 모든 로봇을 폐기합니다.
+dispose()
+```
+
+<br><br><br>
+
+
+## parallel(function1, function2, ...)
+
+입력한 함수들을 동시에 실행합니다. 입력하는 함수들은 fn()의 형태를 가져야 하며 함수 이름이 fn일 필요는 없습니다. 입력하는 함수의 개수는 제한이 없으며, 입력한 함수들을 모두 동시에(병렬 처리) 실행합니다.
+
+### Parameters
+
+| Parameter | Type          | Description               |
+| --------- | ------------- | ------------------------- |
+| function1 | Function      | 동시에 실행할 첫 번째 함수 |
+| function2 | Function      | 동시에 실행할 두 번째 함수 |
+| ...       | Function      | 추가적인 동시에 실행할 함수들 |
+
+### 코드
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+# 5초 앞으로 이동합니다.
+def move():
+    beagle.move_forward(5)
+
+# 양쪽 눈을 빨간색으로 깜박인다.
+def music():
+    while True:
+        beagle.note("C4", 0.5)
+        beagle.note("E4", 0.5)
+        beagle.note("G4", 0.5)
+
+# 음악을 연주하면서 앞으로 이동합니다.
+parallel(move, music)
+
+# Ctrl+C 키를 누를 때까지 계속 기다립니다.
+wait(-1)
+```
+
+<br><br><br>
+
+
+## parallel((function1, args1), (function2, args2), ...)
+
+입력한 함수들을 동시에 실행합니다. 입력하는 함수들은 fn(args)의 형태를 가져야 하며 함수 이름이 fn일 필요는 없습니다. 입력하는 함수의 개수는 제한이 없으며, 입력한 함수들을 모두 동시에(병렬 처리) 실행합니다. 입력한 함수 fn을 호출할 때 parallel 함수에 넣어준 args1, args2, …을 그대로 전달합니다. 따라서 args1, args2, …는 어떠한 데이터 형이라도 가능합니다.
+
+### Parameters
+
+| Parameter | Type             | Description                   |
+| --------- | ---------------- | ----------------------------- |
+| function1 | Function         | 동시에 실행할 첫 번째 함수   |
+| function2 | Function         | 동시에 실행할 두 번째 함수   |
+| ...       | Function         | 추가적인 동시에 실행할 함수들 |
+| args1     | Any              | function1을 호출할 때 전달할 데이터 |
+| args2     | Any              | function2를 호출할 때 전달할 데이터 |
+| ...       | Any              | 추가적인 함수 호출 시 전달할 데이터 |
+
+### 코드
+
+```python
+from roboid import *
+
+beagle1 = Beagle()
+beagle2 = Beagle()
+
+# 5초 앞으로 이동한다.
+def move(robot):
+    robot.move_forward(5)
+
+# 양쪽 눈을 빨간색으로 깜박인다.
+def music(robot):
+    while True:
+        robot.note("C4", 0.5)
+        robot.note("E4", 0.5)
+        robot.note("G4", 0.5)
+
+# 음악을 연주하면서 앞으로 이동한다.
+parallel((move, beagle1), (music, beagle1), (move, beagle2), (music, beagle2))
+
+# Ctrl+C 키를 누를 때까지 계속 기다린다.
+wait(-1)
+```
+
+<br><br><br>
+
+## scan()
+
+시리얼 포트 목록을 출력합니다.
+
+### 코드
+
+```python
+from roboid import *
+
+# 시리얼 포트 목록을 출력합니다.
+scan()
+```
+
+<br><br><br>
+
+## set_executable(execute)
+
+약 20msec마다 호출되는 콜백 함수를 등록합니다.
+
+### Parameters
+
+| Parameter | Type            | Description                                    |
+| --------- | --------------- | ---------------------------------------------- |
+| execute   | 함수 (callable) | 등록할 콜백 함수                               |
+
+### 코드
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+# 약 20msec마다 호출된다.
+def execute():
+    if beagle.front_lidar() < 50:
+        beagle.wheels(-50, -50)
+    else:
+        beagle.wheels(50, 50)
+
+set_executable(execute)  # 콜백 함수를 등록한다.
+```
+
+<br><br><br>
+
+## wait(milliseconds)
+
+1000분의 1초 단위로 milliseconds 시간 동안 기다립니다. 음수 값(예: -1)을 입력하면 영원히 기다립니다.
+
+### Parameters
+
+| Parameter   | Type   | Description          |
+| ----------- | ------ | -------------------- |
+| milliseconds | 실수 | 기다릴 시간(실수) [msec] |
+
+### 코드
+
+```python
+from roboid import *
+
+wait(1000)  # 1초 기다립니다.
+wait(-1)    # 영원히 기다립니다.
+```
+
+<br><br><br>
+
+## wait_until(evaluate)
+
+조건을 만족할 때까지 기다립니다. 조건을 검사하는 함수는 `evaluate()`의 형태를 가지며 True 또는 False를 반환하는 함수여야 합니다. 함수 이름이 evaluate일 필요는 없습니다. 조건을 검사하는 함수가 True를 반환하면 `wait_until` 함수를 중지하고, False를 반환하면 `wait_until` 함수에 계속 머물러 있습니다. 조건을 검사하는 함수는 약 20msec마다 호출되는데, 함수 내에서 시간을 끌면 안 되고 20msec 내에 모두 처리가 되도록 하여야 합니다.
+
+### Parameters
+
+| Parameter | Type   | Description                 |
+| --------- | ------ | --------------------------- |
+| evaluate  | 함수 | 조건을 검사하는 함수 |
+
+### 코드
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+# 조건을 검사하여 True 또는 False를 반환하는 함수
+def evaluate():
+    return beagle.front_lidar() < 50
+
+# 앞쪽 라이다 값이 50보다 작을 때까지 기다립니다.
+wait_until(evaluate)
+```
+
+<br><br><br>
 
 
 
 
 
 
+## wait_until(evaluate, args)
+
+조건을 만족할 때까지 기다립니다. 조건을 검사하는 함수는 `evaluate(args)`의 형태를 가지며 True 또는 False를 반환하는 함수여야 합니다. 함수 이름이 evaluate일 필요는 없습니다. 조건을 검사하는 함수가 True를 반환하면 `wait_until` 함수를 중지하고, False를 반환하면 `wait_until` 함수에 계속 머물러 있습니다. 조건을 검사하는 함수는 약 20msec마다 호출되는데, 함수 내에서 시간을 끌면 안 되고 20msec 내에 모두 처리가 되도록 하여야 합니다. 조건을 검사하는 함수 `evaluate`를 호출할 때 `wait_until` 함수에 넣어 준 `args`를 그대로 전달합니다. 따라서 `args`는 어떠한 데이터 형이라도 가능합니다.
+
+### Parameters
+
+| Parameter | Type   | Description                 |
+| --------- | ------ | --------------------------- |
+| evaluate  | 함수 | 조건을 검사하는 함수         |
+| args      |        | evaluate를 호출할 때 전달할 데이터 |
+
+### 코드
+
+```python
+from roboid import *
+
+beagle1 = Beagle()
+beagle2 = Beagle()
+
+# 조건을 검사하여 True 또는 False를 반환하는 함수
+def evaluate(robot):
+    return robot.front_lidar() < 50
+
+# 첫 번째 비글 로봇의 앞쪽 라이다 값이 50보다 작을 때까지 기다립니다.
+wait_until(evaluate, beagle1)
+# 두 번째 비글 로봇의 앞쪽 라이다 값이 50보다 작을 때까지 기다립니다.
+wait_until(evaluate, beagle2)
+```
 
 
 
 
 
+<br><br><br>
+
+
+## wait_until_ready()
+
+모든 로봇이 준비될 때까지 기다립니다. 여러 대의 로봇이 동작을 시작하는 시점을 동일하게 하기 위해 사용됩니다.
+
+### 코드
+
+```python
+from roboid import *
+
+beagle1 = Beagle()
+beagle2 = Beagle()
+
+# 모든 로봇이 준비될 때까지 기다립니다.
+wait_until_ready()
+
+# 로봇 동작 시작
+beagle1.wheels(50, 50)
+beagle2.wheels(50, 50)
+```
+
+<br><br><br>
+
+## when_do(when, do)
+
+when 함수의 조건을 만족하면 do 함수를 실행합니다.
+
+### 코드
+
+```python
+from roboid import *
+
+beagle = Beagle()
+
+# 앞으로 기울이면 True를 반환한다.
+def when_tilt_forward():
+    return beagle.tilt() == 1
+
+def do_move_forward():
+    beagle.move_forward()
+
+# 비글 로봇을 뒤로 기울이면 True를 반환한다.
+def when_tilt_backward():
+    return beagle.tilt() == -1
+
+def do_move_backward():
+    beagle.move_backward()
+
+# 비글 로봇을 앞으로 기울이면 앞으로 이동하고 뒤로 기울면 뒤로 물러난다.
+when_do(when_tilt_forward, do_move_forward)
+when_do(when_tilt_backward, do_move_backward)
+
+# Ctrl+C 키를 누를 때까지 계속 기다린다.
+wait(-1)
+```
+
+
+<br><br><br>
+
+
+## when_do(when, do, args)
+
+when 함수의 조건을 만족하면 do 함수를 실행합니다.
+
+### 코드
+
+```python
+from roboid import *
+
+beagle1 = Beagle()
+beagle2 = Beagle()
+
+# 앞으로 기울이면 True를 반환한다.
+def when_tilt_forward(beagle):
+    return beagle.tilt() == 1
+
+def do_move_forward(beagle):
+    beagle.move_forward()
+
+# 비글 로봇을 뒤로 기울이면 True를 반환한다.
+def when_tilt_backward(beagle):
+    return beagle.tilt() == -1
+
+def do_move_backward(beagle):
+    beagle.move_backward()
+
+# 비글 로봇을 앞으로 기울이면 앞으로 이동하고 뒤로 기울이면 뒤로 물러난다.
+when_do(when_tilt_forward, do_move_forward, beagle1)
+when_do(when_tilt_backward, do_move_backward, beagle1)
+when_do(when_tilt_forward, do_move_forward, beagle2)
+when_do(when_tilt_backward, do_move_backward, beagle2)
+
+# Ctrl+C 키를 누를 때까지 계속 기다린다.
+wait(-1)
+```
 
 
 
-<br><br><br><br><br><br>
-
+<br><br><br><br><br><br><br><br><br><br><br><br>
