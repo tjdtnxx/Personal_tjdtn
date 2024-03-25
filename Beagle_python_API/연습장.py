@@ -1,8 +1,11 @@
 from roboid import *
 
-beagle1 = Beagle(0)
-beagle2 = Beagle(1)
+beagle = Beagle()
+beagle.start_lidar()
 
-beagle1.move_forward(50)    # beagle1은 앞으로 이동
+print(beagle.is_lidar_ready())
 
-beagle2.move_backward(50)   # beagle2는 뒤로 이동
+# 라이다 센서 값들을 차트로 보여줍니다.
+# value = beagle.lidar_chart()
+
+# print(value)
