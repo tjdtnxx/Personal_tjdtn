@@ -7,7 +7,8 @@
 이 문서는 로보메이션의 Beagle을 Python으로 프로그래밍하려는 사용자를 위한 라이브러리 API Guide입니다. 
 
 아래 목차에서 **도움말**을 보고싶은 **목차**를 선택하세요.<br>
-각 API들의 [제목](#생성)을 클릭하면 [예제코드](#beagle)가 제공되어 있습니다.
+오른쪽 사이드 바에서 각 API들의 **제목** 을 클릭하면 해당 메뉴얼로 넘어가고, `▶`를 눌러 토글을 열면 각 `함수`에 대한 메뉴얼로 이동합니다.
+
 <br><br>
 >Service: [로보메이션](https://www.robomation.net)<br>
 API version: 2024-03-01
@@ -76,10 +77,14 @@ Beagle 로봇의 전원 스위치를 올린 후, 동글과 가까이 두기
 
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 ---
 ---
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 # 생성 및 해제
 Python을 이용해서 Beagle을 프로그래밍을 하기 위해서는 먼저 PC와 Beagle을 연결시켜 Beagle객체를 사용하기 위해서는 Beagle 인스턴스를 생성해주어야 합니다.
@@ -90,7 +95,9 @@ Python을 이용해서 Beagle을 프로그래밍을 하기 위해서는 먼저 P
 - [생성](#beagle)
 - [해제](#dispose)
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 # Beagle 생성
 
@@ -138,7 +145,9 @@ beagle.move_forward(50)    # beagle 앞으로 이동
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## Beagle(index)
 Beagle 인스턴스를 생성하고 하드웨어 비글 로봇과 통신을 연결한다. <br>몇 번째 비글 로봇인지를 나타내는 인덱스를 index로 설정한다. 인덱스가 같으면 같은 비글 로봇이다.
@@ -189,7 +198,9 @@ beagle2.move_backward(50)   # beagle2는 뒤로 이동
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## Beagle(port_name)
 Beagle 인스턴스를 생성하고 port_name의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 연결한다.<br>
@@ -226,7 +237,9 @@ beagle = Beagle('COM52')
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## Beagle(index, port_name)
 Beagle 인스턴스를 생성하고 port_name의 시리얼 포트를 통해 하드웨어 비글 로봇과 통신을 연결한다.<br>
@@ -266,11 +279,15 @@ beagle2 = Beagle(1,'COM53')
 
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 # Beagle 해제
 
@@ -278,7 +295,9 @@ beagle2 = Beagle(1,'COM53')
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## dispose()
 비글 로봇의 상태를 초기화하고 통신 연결을 끊는다.
@@ -307,7 +326,9 @@ beagle.dispose()    # 비글 로봇 연결을 끊는다.
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## reset()
 비글 로봇의 상태를 초기화한다.
@@ -334,12 +355,16 @@ beagle.reset()    # 비글 로봇을 초기화한다.
 
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 
 
@@ -356,7 +381,9 @@ beagle.reset()    # 비글 로봇을 초기화한다.
 - [피봇](#피봇)
 - [바퀴제어](#바퀴-제어)
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 # 전진
 
@@ -384,7 +411,9 @@ beagle.move_forward()
 | --- | --- |
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_forward(sec)
 
@@ -408,7 +437,9 @@ beagle = Beagle()
 beagle.move_forward(2)  # 기본속도로 앞으로 2초 이동한다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_forward(sec, velocity)
 
@@ -440,7 +471,9 @@ beagle.move_forward(2,50)  # 50 %의 속도로 앞으로 2초 이동한다.
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_forward(pulse)
 
@@ -472,7 +505,9 @@ beagle.move_forward_pulse(1000)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_forward(pulse,velocity)
 
@@ -503,14 +538,18 @@ beagle.move_forward_pulse(1000,50)
 
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
 
 
-<br><br><br><Br>
+---
+
+<br><br><br><br><Br>
 
 # 후진
 
@@ -537,7 +576,9 @@ beagle.move_backward()
 | --- | --- |
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_backward(sec)
 
@@ -561,7 +602,9 @@ beagle = Beagle()
 beagle.move_backward(2)  # 기본속도로 뒤로 2초 이동한다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_backward(sec, velocity)
 
@@ -593,7 +636,9 @@ beagle.move_backward(2,50)  # 50 %의 속도로 뒤로 2초 이동한다.
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_backward(pulse)
 
@@ -625,7 +670,9 @@ beagle.move_backward_pulse(1000)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## move_backward(pulse,velocity)
 
@@ -654,12 +701,16 @@ beagle.move_backward_pulse(1000,50)
 # 50 %의 속도로 뒤로 1000 pulse 이동한다.
 ```
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 # 스핀
 
@@ -680,7 +731,9 @@ beagle.turn_left()
 # 50 %의 속도로 제자리에서 왼쪽으로 1초 회전한다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## turn_left(sec)
 
@@ -710,7 +763,9 @@ beagle.turn_left(2)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## turn_left(sec,velocity)
 
@@ -742,7 +797,9 @@ beagle.turn_left(2,50)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## turn_left_pulse(pulse)
 
@@ -775,7 +832,9 @@ beagle.turn_left_pulse(1000)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## turn_left_pulse(pulse,velocity)
 
@@ -808,12 +867,16 @@ beagle.turn_left_pulse(1000,50)
 
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ## turn_right()
 
@@ -832,7 +895,9 @@ beagle.turn_right()
 # 50 %의 속도로 제자리에서 오른쪽으로 1초 회전한다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -873,7 +938,9 @@ beagle.turn_right(2)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## turn_right(sec,velocity)
 
@@ -905,7 +972,9 @@ beagle.turn_right(2,50)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## turn_right_pulse(pulse)
 
@@ -938,7 +1007,9 @@ beagle.turn_right_pulse(1000)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## turn_right_pulse(pulse,velocity)
 
@@ -969,12 +1040,16 @@ beagle.turn_right_pulse(1000,50)
 # 50 %의 속도로 제자리에서 오른쪽으로 1000 펄스 회전한다.
 ```
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 
 # 피봇
@@ -1001,7 +1076,9 @@ beagle.pivot_left()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_left(sec)
 
@@ -1030,7 +1107,9 @@ beagle.pivot_left(2)
 # 50 %의 속도로 왼쪽 바퀴를 중심으로 2 초 회전한다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_left(sec, velocity)
 
@@ -1063,7 +1142,9 @@ beagle.pivot_left(2,50)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_left_pulse(pulse)
 
@@ -1097,7 +1178,9 @@ beagle.pivot_left_pulse(1000)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_left_pulse(pulse,velocity)
 
@@ -1129,12 +1212,16 @@ beagle.pivot_left_pulse(1000,50)
 ```
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 
 ## pivot_right()
@@ -1159,7 +1246,9 @@ beagle.pivot_right()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_right(sec)
 
@@ -1188,7 +1277,9 @@ beagle.pivot_right(2)
 # 50 %의 속도로 오른쪽 바퀴를 중심으로 2 초 회전한다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_right(sec, velocity)
 
@@ -1221,7 +1312,9 @@ beagle.pivot_right(2,50)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_right_pulse(pulse)
 
@@ -1255,7 +1348,9 @@ beagle.pivot_right_pulse(1000)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## pivot_right_pulse(pulse,velocity)
 
@@ -1287,13 +1382,17 @@ beagle.pivot_right_pulse(1000,50)
 ```
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 
 # 바퀴 제어
@@ -1334,7 +1433,9 @@ beagle.wheels(0,0)      # 양쪽 바퀴를 정지한다.
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## wheels(velocity)
 
@@ -1367,7 +1468,9 @@ beagle.wheels(-50)
 beagle.wheels(0)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 ## left_wheel(velocity)
 
 왼쪽 바퀴의 속도를 설정한다. 
@@ -1403,7 +1506,9 @@ beagle.left_wheel(0)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## right_wheel(velocity)
 
@@ -1436,7 +1541,9 @@ beagle.right_wheel(-50)
 beagle.right_wheel(0)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## stop()
@@ -1457,13 +1564,18 @@ beagle.wheels(50, 50)
 beagle.stop()
 ```
 
-<br><br><br><br>
-
----
 ---
 
-<br><br><br><br>
+<br><br><br><br><br>
 
+---
+
+
+---
+
+<br><br><br><br><br>
+
+# 소리 제어
 
 ## buzzer(hz)
 
@@ -1492,7 +1604,9 @@ beagle.buzzer(261.6)
 beagle.buzzer(0)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## tempo(bpm)
@@ -1517,7 +1631,9 @@ beagle.tempo(60)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## note(pitch)
@@ -1563,7 +1679,9 @@ beagle.note("OFF")
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## note(pitch, beats)
 
@@ -1609,10 +1727,16 @@ beagle.note("OFF", 0.5)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
+---
+---
 
+<br><br><br><br>
+# Sound_ID 제어
 
 ## sound(sound_id)
 
@@ -1658,7 +1782,9 @@ beagle.move_forward()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1692,7 +1818,9 @@ wait(-1)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1713,18 +1841,22 @@ beagle = Beagle()
 # 삐 소리를 재생한다.
 beagle.beep()
 ```
-<br><br><br>
-
-
-
-<br><br><br><br>
-
----
 ---
 
 <br><br><br><br>
 
-# 센서
+
+
+
+
+---
+
+
+---
+
+<br><br><br><br><br>
+
+# 블루투스, 온도
 
 ## signal_strength()
 
@@ -1748,7 +1880,9 @@ beagle = Beagle()
 # 신호 세기 값을 얻는다.
 value = beagle.signal_strength()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1774,7 +1908,9 @@ beagle = Beagle()
 # 온도 센서 값을 얻는다.
 value = beagle.temperature()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1801,7 +1937,9 @@ beagle = Beagle()
 # 왼쪽 바퀴의 엔코더 값을 얻는다.
 value = beagle.left_encoder()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1829,7 +1967,9 @@ beagle = Beagle()
 # 오른쪽 바퀴의 엔코더 값을 얻는다.
 value = beagle.right_encoder()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1850,7 +1990,9 @@ beagle = Beagle()
 # 엔코더 값을 초기화한다.
 beagle.reset_encoder()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1878,7 +2020,9 @@ beagle = Beagle()
 # X축 가속도 값을 얻습니다.
 value = beagle.accelerometer_x()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1906,7 +2050,9 @@ beagle = Beagle()
 value = beagle.accelerometer_y()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1933,7 +2079,9 @@ beagle = Beagle()
 # Z축 가속도 값을 얻습니다.
 value = beagle.accelerometer_z()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1963,7 +2111,9 @@ beagle = Beagle()
 # 가속도 값을 얻습니다.
 index, x, y, z = beagle.accelerometer()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -1993,7 +2143,9 @@ beagle = Beagle()
 # X축 가속도 값을 얻습니다.
 value = beagle.raw_accelerometer_x()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2021,7 +2173,9 @@ beagle = Beagle()
 value = beagle.raw_accelerometer_y()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## raw_accelerometer_z()
 
@@ -2046,7 +2200,9 @@ beagle = Beagle()
 # Z축 가속도 값을 얻습니다.
 value = beagle.raw_accelerometer_z()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## raw_accelerometer()
@@ -2075,7 +2231,9 @@ beagle = Beagle()
 # 가속도 값을 얻습니다.
 index, x, y, z = beagle.raw_accelerometer()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## scale_accelerometer()
@@ -2102,7 +2260,9 @@ beagle = Beagle()
 scale = beagle.scale_accelerometer()
 print(beagle.accelerometer_x() == beagle.raw_accelerometer_x() * scale)
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## listen_accelerometer(fn, interpolation=None)
 
@@ -2128,7 +2288,9 @@ def listener(index, timestamp, x, y, z):
 
 beagle.listen_accelerometer(listener)
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2160,7 +2322,9 @@ def listener(index, timestamp, x, y, z):
 beagle.listen_raw_accelerometer(listener)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## gyroscope_x()
 
@@ -2184,7 +2348,9 @@ value = beagle.gyroscope_x()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## gyroscope_y()
 
@@ -2208,7 +2374,9 @@ value = beagle.gyroscope_y()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## gyroscope_z()
 
@@ -2232,7 +2400,9 @@ value = beagle.gyroscope_z()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## gyroscope()
 
@@ -2261,7 +2431,9 @@ index, x, y, z = beagle.gyroscope()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## raw_gyroscope_x()
@@ -2289,7 +2461,9 @@ value = beagle.raw_gyroscope_x()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## raw_gyroscope_y()
@@ -2312,7 +2486,9 @@ beagle = Beagle()
 # Y축 자이로 값을 얻습니다.
 value = beagle.raw_gyroscope_y()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## raw_gyroscope_z()
@@ -2335,7 +2511,9 @@ beagle = Beagle()
 # Z축 자이로 값을 얻습니다.
 value = beagle.raw_gyroscope_z()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## raw_gyroscope()
 
@@ -2361,7 +2539,9 @@ beagle = Beagle()
 index, x, y, z = beagle.raw_gyroscope()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## scale_gyroscope()
 
@@ -2386,7 +2566,9 @@ print(beagle.gyroscope_x() == beagle.raw_gyroscope_x() * scale)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## listen_gyroscope(fn, interpolation=None)
@@ -2416,7 +2598,9 @@ beagle.listen_gyroscope(listener)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## listen_raw_gyroscope(fn, interpolation=None)
@@ -2445,7 +2629,9 @@ def listener(index, timestamp, x, y, z):
 beagle.listen_raw_gyroscope(listener)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## tilt()
@@ -2476,7 +2662,9 @@ value = beagle.tilt()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2507,7 +2695,9 @@ value = beagle.battery_state()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## charge_state()
 
@@ -2533,7 +2723,9 @@ value = beagle.charge_state()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2559,7 +2751,9 @@ value = beagle.timestamp_basic()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## timestamp_imu()
 
@@ -2581,15 +2775,21 @@ value = beagle.timestamp_imu()
 ```
 
 
-<br><br><br>
-
+---
 
 <br><br><br><br>
+
+
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 
 # 서보 모터
@@ -2616,7 +2816,9 @@ beagle = Beagle()
 # 서보 모터 A를 30도로 회전시킵니다.
 beagle.servo_output_a(30)
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2641,7 +2843,9 @@ beagle = Beagle()
 beagle.servo_output_b(30)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 ## servo_output_c(degree)
 
 서보 모터 C를 지정한 각도로 회전시킵니다. 이 메소드는 회전 완료를 기다리지 않습니다.
@@ -2664,7 +2868,9 @@ beagle.servo_output_c(30)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## servo_output_a_until_done(degree)
 
@@ -2687,7 +2893,9 @@ beagle = Beagle()
 beagle.servo_output_a_until_done(30)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 ## servo_output_b_until_done(degree)
 
 서보 모터 B를 degree 각도로 회전시키고 회전이 완료될 때까지 기다립니다.
@@ -2711,7 +2919,9 @@ beagle.servo_output_b_until_done(30)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2738,7 +2948,9 @@ beagle.servo_output_c_until_done(30)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## servo_speed_a(speed)
@@ -2763,7 +2975,9 @@ beagle.servo_speed_a(3)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2789,7 +3003,9 @@ beagle.servo_speed_b(3)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2817,7 +3033,9 @@ beagle.servo_speed_c(3)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2836,7 +3054,9 @@ beagle = Beagle()
 beagle.release_servo_a()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -2873,7 +3093,9 @@ beagle = Beagle()
 beagle.release_servo_c()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## servo_input_a()
@@ -2897,7 +3119,9 @@ beagle = Beagle()
 value = beagle.servo_input_a()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## servo_input_b()
 
@@ -2944,15 +3168,21 @@ value = beagle.servo_input_c()
 
 
 
-<br><br><br>
-
+---
 
 <br><br><br><br>
+
+
+---
+
+<br><br><br><br><br>
 
 ---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 # LiDar
 
@@ -2974,7 +3204,9 @@ beagle.start_lidar()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## stop_lidar()
 
@@ -2992,7 +3224,9 @@ beagle.stop_lidar()
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## is_lidar_ready()
 
@@ -3017,7 +3251,9 @@ beagle.start_lidar()
 value = beagle.is_lidar_ready()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -3039,7 +3275,9 @@ value = beagle.wait_until_lidar_ready()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -3065,7 +3303,9 @@ beagle.start_lidar()
 # 라이다 센서 값을 얻습니다.
 values = beagle.lidar()
 ```
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## left_lidar()
@@ -3091,7 +3331,9 @@ beagle.start_lidar()
 value = beagle.left_lidar()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## right_lidar()
@@ -3119,7 +3361,9 @@ value = beagle.right_lidar()
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## front_lidar()
 
@@ -3144,7 +3388,9 @@ beagle.start_lidar()
 value = beagle.front_lidar()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -3173,7 +3419,9 @@ beagle.start_lidar()
 value = beagle.rear_lidar()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -3200,7 +3448,9 @@ beagle.start_lidar()
 value = beagle.left_front_lidar()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -3228,7 +3478,9 @@ beagle.start_lidar()
 value = beagle.right_front_lidar()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## left_rear_lidar()
@@ -3254,7 +3506,9 @@ beagle.start_lidar()
 value = beagle.left_rear_lidar()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -3285,7 +3539,9 @@ beagle.start_lidar()
 value = beagle.right_rear_lidar()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## resolution()
@@ -3313,7 +3569,9 @@ beagle.start_lidar()
 value = beagle.resolution()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## lidar_chart()
 
@@ -3329,7 +3587,9 @@ beagle.start_lidar()
 value = beagle.lidar_chart()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## lidar_mode(mode)
 
@@ -3351,14 +3611,20 @@ beagle.lidar_mode('zero')
 beagle.start_lidar()
 ```
 
-<br><br><br>
+---
 
 <br><br><br><br>
 
 ---
+
+<br><br><br><br><br>
+
+---
 ---
 
-<br><br><br><br>
+---
+
+<br><br><br><br><br>
 
 
 # 전역 함수
@@ -3377,7 +3643,9 @@ beagle = Beagle()
 dispose()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## parallel(function1, function2, ...)
@@ -3417,7 +3685,9 @@ parallel(move, music)
 wait(-1)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## parallel((function1, args1), (function2, args2), ...)
@@ -3461,7 +3731,9 @@ parallel((move, beagle1), (music, beagle1), (move, beagle2), (music, beagle2))
 wait(-1)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## scan()
 
@@ -3476,7 +3748,9 @@ from roboid import *
 scan()
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## set_executable(execute)
 
@@ -3505,7 +3779,9 @@ def execute():
 set_executable(execute)  # 콜백 함수를 등록한다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## wait(milliseconds)
 
@@ -3526,7 +3802,9 @@ wait(1000)  # 1초 기다립니다.
 wait(-1)    # 영원히 기다립니다.
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## wait_until(evaluate)
 
@@ -3553,7 +3831,9 @@ def evaluate():
 wait_until(evaluate)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 
@@ -3593,7 +3873,9 @@ wait_until(evaluate, beagle2)
 
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## wait_until_ready()
@@ -3616,7 +3898,9 @@ beagle1.wheels(50, 50)
 beagle2.wheels(50, 50)
 ```
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 ## when_do(when, do)
 
@@ -3652,7 +3936,9 @@ wait(-1)
 ```
 
 
-<br><br><br>
+---
+
+<br><br><br><br>
 
 
 ## when_do(when, do, args)
@@ -3693,4 +3979,12 @@ wait(-1)
 
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+---
+
+<br><br><br><br>---
+
+<br><br><br><br>---
+
+<br><br><br><br>---
+
+<br><br><br><br>
